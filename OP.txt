@@ -1,0 +1,146 @@
+enter the no. of nonterminals
+3
+enter the productions in a grammar
+S->Cc|Dc|cSd
+C->cC|cD|cSd
+D->abcd
+first
+FIRS[S]=ca
+FIRS[C]=c
+FIRS[D]=a
+follow
+FOLLOW[S]=$d
+FOLLOW[C]=c
+FOLLOW[D]=c
+
+M[S,c]=S->Cc
+M[S,c]=S->Dc
+M[S,c]=S->cSd
+M[C,c]=C->cC
+M[C,c]=C->cD
+M[C,c]=C->cSd
+M[D,a]=D->abcd
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Enter the number of productions:
+7
+Enter the number of non terminals:
+3
+Enter the non terminals one by one:
+S C D
+Enter the number of terminals:
+4
+Enter the terminals (single lettered) one by one:
+a b c d
+Enter the productions one by one in form (S->ABc):
+S->Cc
+S->Dc
+S->cSd
+C->cC
+C->cD
+C->cSd
+D->abcd
+
+I0:
+Z->.S
+S->.Cc
+S->.Dc
+S->.cSd
+C->.cC
+C->.cD
+C->.cSd
+D->.abcd
+
+I0 on reading the symbol S goes to I1:
+Z->S.
+
+I0 on reading the symbol C goes to I2:
+S->C.c
+
+I0 on reading the symbol D goes to I3:
+S->D.c
+
+I0 on reading the symbol c goes to I4:
+S->c.Sd
+C->c.C
+C->c.D
+C->c.Sd
+S->.Cc
+S->.Dc
+S->.cSd
+C->.cC
+C->.cD
+C->.cSd
+D->.abcd
+
+I0 on reading the symbol a goes to I5:
+D->a.bcd
+
+I2 on reading the symbol c goes to I6:
+S->Cc.
+
+I3 on reading the symbol c goes to I7:
+S->Dc.
+
+I4 on reading the symbol S goes to I8:
+S->cS.d
+C->cS.d
+
+I4 on reading the symbol C goes to I9:
+C->cC.
+S->C.c
+
+I4 on reading the symbol D goes to I10:
+C->cD.
+S->D.c
+
+I4 on reading the symbol c goes to I4.
+I4 on reading the symbol a goes to I5.
+I5 on reading the symbol b goes to I11:
+D->ab.cd
+
+I8 on reading the symbol d goes to I12:
+S->cSd.
+C->cSd.
+
+I9 on reading the symbol c goes to I6.
+I10 on reading the symbol c goes to I7.
+I11 on reading the symbol c goes to I13:
+D->abc.d
+
+I13 on reading the symbol d goes to I14:
+D->abcd.
+
+
+*******Shift Actions********
+
+        a       b       c       d       $       S       C       D
+I0      S5              S4                      1       2       3
+I1                                      ACC
+I2                      S6
+I3                      S7
+I4      S5              S4                      8       9       10
+I5              S11
+I6
+I7
+I8                              S12
+I9                      S6
+I10                     S7
+I11                     S13
+I12
+I13                             S14
+I14
+
+
+*********Reduce actions*********
+
+        a       b       c       d       $
+I6                      R-1450102973    R1      R1
+I7                              R2      R2
+I12                             R3      R3
+I9                      R4
+I10                     R5
+I12                     R6
+I14                     R7
+
